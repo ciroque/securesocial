@@ -33,6 +33,7 @@ case class AuthenticationMethod(method: String) {
  * Authentication methods used by the identity providers
  */
 object AuthenticationMethod {
+  val Ldap = AuthenticationMethod("ldap")
   val OAuth1 = AuthenticationMethod("oauth1")
   val OAuth2 = AuthenticationMethod("oauth2")
   val OpenId = AuthenticationMethod("openId")

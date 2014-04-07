@@ -40,6 +40,7 @@ trait Identity {
   def oAuth1Info: Option[OAuth1Info]
   def oAuth2Info: Option[OAuth2Info]
   def passwordInfo: Option[PasswordInfo]
+  def ldapInfo: Option[LdapInfo]
 }
 
 /**
@@ -49,7 +50,8 @@ case class SocialUser(identityId: IdentityId, firstName: String, lastName: Strin
                       avatarUrl: Option[String], authMethod: AuthenticationMethod,
                       oAuth1Info: Option[OAuth1Info] = None,
                       oAuth2Info: Option[OAuth2Info] = None,
-                      passwordInfo: Option[PasswordInfo] = None) extends Identity
+                      passwordInfo: Option[PasswordInfo] = None,
+                      ldapInfo: Option[LdapInfo] = None) extends Identity
 
 object SocialUser {
   def apply(i: Identity): SocialUser = {
@@ -96,3 +98,10 @@ case class OAuth2Info(accessToken: String, tokenType: Option[String] = None,
  * @param salt the optional salt used when hashing
  */
 case class PasswordInfo(hasher: String, password: String, salt: Option[String] = None)
+
+/**
+ * LDAP-specific details
+ *
+ * @param groups the list of groups to which the User belongs.
+ */
+case class LdapInfo(groups: List[String])
