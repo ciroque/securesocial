@@ -191,7 +191,6 @@ object UserService {
     }
   }
 
-
   private def notInitialized() {
     Logger.error("[securesocial] UserService was not initialized. Make sure a UserService plugin is specified in your play.plugins file")
     throw new RuntimeException("UserService not initialized")
